@@ -18,16 +18,16 @@ from sklearn.preprocessing import StandardScaler
 PORT = "COM7"
 BAUD = 115200
 FS = 860
-WINDOW_SIZE = 180
+WINDOW_SIZE = 140
 GRAPH_LEN = 500
 
 MODEL_PATH = "rf_model.pkl"
 SCALER_PATH = "scaler.pkl"
 DATASET_PATH = "structured_dataset.csv"
 
-PROB_THRESHOLD = 0.60
-STRONG_CONFIRM_FRAMES = 3
-SMOOTHING_WINDOW = 25
+PROB_THRESHOLD = 0.50
+STRONG_CONFIRM_FRAMES = 2
+SMOOTHING_WINDOW = 10
 
 # ================= SERIAL =================
 try:
@@ -221,13 +221,13 @@ def update(frame):
             pred = last_state if last_state is not None else 0
 
         # Strong confirmation
-        if pred == 2:
-            strong_counter += 1
-        else:
-            strong_counter = 0
+       # if pred == 2:
+        #    strong_counter += 1
+        #else:
+         #   strong_counter = 0
 
-        if strong_counter < STRONG_CONFIRM_FRAMES and pred == 2:
-            pred = 1
+       # if strong_counter < STRONG_CONFIRM_FRAMES and pred == 2:
+        #    pred = 1
 
         state_buffer.append(pred)
         state = max(set(state_buffer), key=state_buffer.count)
