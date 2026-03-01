@@ -1,0 +1,4 @@
+Model,Training_Accuracy,CrossVal_Accuracy,Silhouette_Score
+Logistic_Regression,1.0,1.0,0.8702527109137879
+SVM_RBF,1.0,1.0,0.8702527109137879
+Random_Forest,1.0,1.0,0.8702527109137879
